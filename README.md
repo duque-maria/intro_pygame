@@ -55,7 +55,7 @@
            - Superficie genérica: pygame.Surface()
            - Ventana del juego: pygame.display.set_mode()
 
-## Ejemplo: bandera de Colombia
+### Ejemplo: bandera de Colombia
 ```Python
 # Importamos la librería pygame
 import pygame
@@ -130,3 +130,44 @@ while True:
 pygame.quit()
 ```
 ![bandera](bandera.jpg "Ejemplo")
+
+## Gestión del tiempo y los eventos
+
+### Módulo time
+
+- Este módulo ofrece varias funciones que permiten cronometrar la sesión actual (desde el init) o pausar la ejecución, por ejemplo.
+- Funciones:
+    - pygame.time.get_ticks
+    - pygame.time.waitpygame.time.delay
+
+- Objeto Clock
+    - La función tick permite actualizar el reloj asociado con el juego actual.
+    - Se llama cada vez que se actualiza la pantalla del juego.
+    - Permite especificar el número máximo de fotogramas que se muestra por segundo y por tanto, limitar y controlar la velocidad de ejecución del juego.
+    - Si insertamos en un bucle de juego la siguiente línea, garantizamos que nunca será más rápido de 50 fotogtramas por segundo: `Clock.tick(50)`
+
+### Gestión de eventos
+- Hay diferentes formas para que el programa sepa que se ha desencadenado un evento.
+- Es esencial que los programas puedan conocer inmediantamente las acciones del jugador a través del teclado, el mouse, el joystick o cualquier otro periférico.
+
+#### Función pygame.event.get
+- Permite obetener todos los eventos en espera de ser procesados y que están disponibles en una cola.
+- Si no hay ninguno, entonces se obtiene una colección vacía.
+```Python
+# Usamos un bucle for para recorrer todos los eventos de la colección obtenida a llamar al llamar a la función get.
+for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_ESCAPE:
+            PARAR_JUEGO = True
+```
+#### Función pygame.event.wait
+- Esta función espera a que ocurra un evento, y en cuánto sucede, está disponible.
+```Python
+while True:
+    event = pygame.event.wait()
+    if event.type == pygame.QUIT:
+        break
+```
+
+#### Función pygame.event.poll
+- Devuelve solo uno de los evento que están en la cola de espera.
