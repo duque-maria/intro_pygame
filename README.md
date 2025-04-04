@@ -1,2 +1,3 @@
-# intro_pygame
-Estructura de un juego en  PyGame
+# Estructura de un juego en  Pygame
+
+## Inicialización
