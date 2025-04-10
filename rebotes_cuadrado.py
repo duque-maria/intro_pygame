@@ -29,7 +29,7 @@ while 1:
     if XX >= 320:
         XX = 320
         MOVIMIENTO = -3
-    elif XX >= 0:
+    elif XX <= 0:
         XX = 0
         MOVIMIENTO = 3
     
